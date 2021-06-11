@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -161,6 +162,26 @@ public class HomeActivity extends AppCompatActivity
                 String mDescription = description.getText().toString().trim();
                 String id = reference.push().getKey();
                 String date = DateFormat.getDateInstance().format(new Date());
+
+                if (!mTask.isEmpty()  && !mDescription.isEmpty()) {
+                    Intent intent = new Intent(Intent.ACTION_INSERT);
+                    intent.setData(CalendarContract.Events.CONTENT_URI);
+
+                    intent.putExtra(CalendarContract.Events.TITLE, mTask);
+//                    intent.putExtra(CalendarContract.Events.EVENT_LOCATION, eventLocation.getText().toString());
+                    intent.putExtra(CalendarContract.Events.DESCRIPTION, mDescription);
+                    intent.putExtra(CalendarContract.Events.ALL_DAY, true);
+                    intent.putExtra(Intent.EXTRA_EMAIL, "test@yahoo.com, test2@yahoo.com, test3@yahoo.com");
+                    if(intent.resolveActivity(getPackageManager()) != null){
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(HomeActivity.this, "There is no app that support this action", Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    Toast.makeText(HomeActivity.this, "Please fill all the fields",
+                            Toast.LENGTH_SHORT).show();
+                }
 
 
                 if (TextUtils.isEmpty(mTask)) {
