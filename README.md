@@ -1,5 +1,5 @@
-# BetterBuy
-This is an android ecommerce application that allows users to purchase items online
+# Do It
+This is an android todo list application where users can add tasks,delete and update them
 
 
 
@@ -9,7 +9,7 @@ This is an android ecommerce application that allows users to purchase items onl
 ## Setup Instructions
 * Install the java development kit from https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 * Install gradle.
-* clone the project using $ git clone https://github.com/lilianjerikamau/BetterBuy.git to your preferred folder.
+* clone the project using $ git clone https://github.com/lilianjerikamau/TODO.git to your preferred folder.
 * Run the application on Android Studio.
 
 
